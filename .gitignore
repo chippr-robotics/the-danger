@@ -1,0 +1,24 @@
+# Runtime state - don't commit this chaos
+.danger-state/
+
+# Mailbox contents (except structure)
+mailboxes/*/inbox.md
+mailboxes/*/outbox.md
+mailboxes/*/status.json
+
+# Keep the orchestrator mailbox structure template
+!mailboxes/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log

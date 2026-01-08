@@ -1,0 +1,5 @@
+# This directory holds agent mailboxes
+# Each agent gets a subdirectory with:
+# - inbox.md   (incoming messages)
+# - outbox.md  (outgoing messages)
+# - status.json (agent state)
