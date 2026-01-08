@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "the-danger",
+  "version": "1.0.0",
+  "description": "Actor-based concurrent AI agent system for complex task orchestration. Multiple specialized agents collaborate via mailbox message passing to complete ambitious development projects.",
+  "owner": {
+    "name": "The Danger Collective",
+    "email": "support@chippr-robotics.com"
+  },
+  "plugins": [
+    {
+      "name": "the-danger",
+      "description": "Actor-based concurrent ralph loops with self-defining agents. Like ralph-wiggum, but with friends! Multiple AI agents collaborate via mailbox message passing to complete complex tasks.",
+      "version": "1.0.0",
+      "source": ".",
+      "category": "development"
+    }
+  ]
+}
