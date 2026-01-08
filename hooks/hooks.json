@@ -1,0 +1,15 @@
+{
+  "hooks": [
+    {
+      "type": "Stop",
+      "description": "Intercepts stop to continue actor loops and process mailboxes",
+      "command": "${CLAUDE_PLUGIN_ROOT}/hooks/actor-stop-hook.sh"
+    },
+    {
+      "type": "PostToolUse",
+      "description": "Process mailbox messages after file operations",
+      "command": "${CLAUDE_PLUGIN_ROOT}/hooks/mailbox-hook.sh",
+      "tools": ["Write", "Edit", "Bash"]
+    }
+  ]
+}
