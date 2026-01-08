@@ -21,17 +21,22 @@ Like Ralph Wiggum, this system may seem simple at first. But beneath that paste-
 
 ```bash
 # Clone it
-git clone https://github.com/chippr-robotics/the-danger.git .claude/plugins/the-danger
+git clone https://github.com/chippr-robotics/the-danger.git ~/.claude/plugins/the-danger
 
-# In Claude Code, unleash the chaos
-/danger-loop "Build me a todo app with React, Express backend, and tests"
+# In Claude Code, initialize the orchestrator
+cd ~/.claude/plugins/the-danger
+./scripts/start-danger.sh "Build me a todo app with React, Express backend, and tests"
 
-# Grab popcorn 🍿
-# Watch multiple AI agents collaborate to build your app
-# If it explodes, that's why we called it "The Danger"
+# Claude becomes the cho-cho-choose orchestrator and will:
+# 1. Create specialized agents (scripter, tester, etc.)
+# 2. Set up mailboxes for inter-agent communication
+# 3. Coordinate work and route messages between agents
+# 4. Output ORCHESTRATION_COMPLETE when done
 ```
 
-**What just happened?** Multiple AI agents just spawned, started passing notes to each other via mailboxes, and are now building your app in parallel. It's like a software team that actually communicates.
+**What happens?** The script outputs an orchestrator prompt. Claude then acts as the "cho-cho-choose" coordinator, spawning agents with mailboxes at `mailboxes/<agent>/`, assigning tasks, and coordinating via `@mention` message passing until all work is verified complete.
+
+**Note:** The `/danger-loop` slash command is defined but may not be recognized by all Claude Code versions. The manual script invocation above is the reliable method.
 
 ## What Is This?
 
@@ -75,17 +80,22 @@ Each agent:
 
 ### As a Claude Code Plugin
 
-1. Clone into your project:
+1. Clone into your plugins directory:
 ```bash
-git clone https://github.com/chippr-robotics/the-danger.git .claude/plugins/the-danger
+git clone https://github.com/chippr-robotics/the-danger.git ~/.claude/plugins/the-danger
 ```
 
-2. Start the danger:
+2. In Claude Code, run the start script:
 ```bash
-/danger-loop "Build me a REST API with authentication, tests, and documentation"
+~/.claude/plugins/the-danger/scripts/start-danger.sh "Build me a REST API with authentication, tests, and documentation" --actors 3
 ```
 
-3. Watch the magic (or horror, depending on your perspective)
+3. Claude receives the orchestrator prompt and begins:
+   - Analyzing and decomposing the task
+   - Creating agent prompts in `agents/<name>.md`
+   - Setting up mailboxes in `mailboxes/<name>/`
+   - Coordinating work via `@mention` message routing
+   - Verifying completion and outputting `ORCHESTRATION_COMPLETE`
 
 ### Standalone Mode
 
