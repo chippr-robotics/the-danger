@@ -15,6 +15,24 @@
 
 Like Ralph Wiggum, this system may seem simple at first. But beneath that paste-eating exterior lies a sophisticated multi-agent orchestration framework that will have your codebase generating itself while you sleep.
 
+## TL;DR/YOLO Install + Demo in 60 Seconds ⚡
+
+*For the truly reckless:*
+
+```bash
+# Clone it
+git clone https://github.com/chippr-robotics/the-danger.git .claude/plugins/the-danger
+
+# In Claude Code, unleash the chaos
+/danger-loop "Build me a todo app with React, Express backend, and tests"
+
+# Grab popcorn 🍿
+# Watch multiple AI agents collaborate to build your app
+# If it explodes, that's why we called it "The Danger"
+```
+
+**What just happened?** Multiple AI agents just spawned, started passing notes to each other via mailboxes, and are now building your app in parallel. It's like a software team that actually communicates.
+
 ## What Is This?
 
 Remember the `ralph-wiggum` plugin? That beautiful disaster that runs Claude in a loop until your code works?
