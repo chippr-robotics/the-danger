@@ -2,8 +2,14 @@
   "name": "the-danger",
   "version": "1.0.0",
   "description": "Actor-based concurrent ralph loops with self-defining agents. Like ralph-wiggum, but with friends! Multiple AI agents collaborate via mailbox message passing to complete complex tasks. I am become danger.",
-  "author": "The Danger Collective",
-  "repository": "https://github.com/chippr-robotics/the-danger",
+  "author": {
+    "name": "The Danger Collective",
+    "email": "support@chippr-robotics.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chippr-robotics/the-danger"
+  },
   "keywords": [
     "claude-code",
     "plugin",
@@ -11,7 +17,10 @@
     "agents",
     "ralph",
     "concurrent",
-    "autonomous"
+    "autonomous",
+    "orchestration",
+    "collaboration",
+    "multi-agent"
   ],
   "engines": {
     "claude-code": ">=1.0.0"
