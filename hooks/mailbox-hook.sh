@@ -9,8 +9,8 @@
 set -euo pipefail
 
 DANGER_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MAILBOXES_DIR="${DANGER_ROOT}/mailboxes"
-STATE_DIR="${DANGER_ROOT}/.danger-state"
+MAILBOXES_DIR="${MAILBOXES_DIR:-${DANGER_ROOT}/mailboxes}"
+STATE_DIR="${STATE_DIR:-${DANGER_ROOT}/.danger-state}"
 
 # Only process if mailboxes exist
 if [[ ! -d "$MAILBOXES_DIR" ]]; then
@@ -20,6 +20,7 @@ fi
 # Check for any outbox with pending messages
 MESSAGES_ROUTED=0
 
+shopt -s nullglob
 for mailbox in "$MAILBOXES_DIR"/*/; do
     if [[ -d "$mailbox" ]]; then
         outbox="${mailbox}outbox.md"
@@ -52,7 +53,7 @@ for mailbox in "$MAILBOXES_DIR"/*/; do
 $line
 ---
 EOF
-                                ((MESSAGES_ROUTED++))
+                                MESSAGES_ROUTED=$((MESSAGES_ROUTED + 1))
                             fi
                         done
                     else
@@ -69,7 +70,7 @@ EOF
 $line
 ---
 EOF
-                            ((MESSAGES_ROUTED++))
+                            MESSAGES_ROUTED=$((MESSAGES_ROUTED + 1))
                         fi
                     fi
                 fi
@@ -88,6 +89,7 @@ EOF
         fi
     fi
 done
+shopt -u nullglob
 
 # Log routing activity if messages were routed
 if [[ $MESSAGES_ROUTED -gt 0 ]]; then

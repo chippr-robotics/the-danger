@@ -37,7 +37,8 @@ echo ""
 
 # Kill any running actor processes
 KILLED=0
-for pid_file in "$STATE_DIR"/*.pid 2>/dev/null; do
+shopt -s nullglob
+for pid_file in "$STATE_DIR"/*.pid; do
     if [[ -f "$pid_file" ]]; then
         pid=$(cat "$pid_file")
         actor_name=$(basename "$pid_file" .pid)
@@ -50,7 +51,7 @@ for pid_file in "$STATE_DIR"/*.pid 2>/dev/null; do
                 kill "$pid" 2>/dev/null || true
                 echo "Terminated: $actor_name (PID $pid)"
             fi
-            ((KILLED++))
+            KILLED=$((KILLED + 1))
         else
             echo "Already stopped: $actor_name"
         fi
@@ -58,6 +59,7 @@ for pid_file in "$STATE_DIR"/*.pid 2>/dev/null; do
         rm -f "$pid_file"
     fi
 done
+shopt -u nullglob
 
 if [[ $KILLED -eq 0 ]]; then
     echo "No running actors found."
